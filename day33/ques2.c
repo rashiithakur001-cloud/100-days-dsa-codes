@@ -28,32 +28,32 @@ Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
 #include <stdlib.h>
 #include <string.h>
 int evalRPN(char** tokens, int tokensSize) {
-    int stack[tokensSize];
-    int top = -1;
+int stack[tokensSize];
+int top = -1;
 for(int i = 0; i < tokensSize; i++) {
   if(strcmp(tokens[i], "+") == 0) {
     int b = stack[top--];
     int a = stack[top--];
- stack[++top] = a + b;
-        }
- else if(strcmp(tokens[i], "-") == 0) {
+  stack[++top] = a + b;
+}
+else if(strcmp(tokens[i], "-") == 0) {
     int b = stack[top--];
     int a = stack[top--];
     stack[++top] = a - b;
-        }
-else if(strcmp(tokens[i], "*") == 0) {
+}
+ else if(strcmp(tokens[i], "*") == 0) {
     int b = stack[top--];
     int a = stack[top--];
  stack[++top] = a * b;
  }
 else if(strcmp(tokens[i], "/") == 0) {
-  int b = stack[top--];
-  int a = stack[top--];
-   stack[++top] = a / b;
+    int b = stack[top--];
+    int a = stack[top--];
+ stack[++top] = a / b;
 }
- else {
-stack[++top] = atoi(tokens[i]);
+  else {
+    stack[++top] = atoi(tokens[i]);
 }
     }   
- return stack[top];
+    return stack[top];
 }
